@@ -1,11 +1,18 @@
 
-import { Request, Response,Router } from 'express';
+import { Router } from 'express';
 
 import { CreateUserController } from './controllers/user/CreateUserController';
+import { AuthUserController } from './controllers/user/AuthUserController';
 
 const router = Router();
-router.post('/users', (req: Request, res: Response) => {
-    return new CreateUserController().handle(req, res); // CreateUserController.handle(req, res);
-});
+
+//** ROTAS USER **/
+
+//rota de cadastro de usuário
+router.post('/users',new CreateUserController().handle);
+
+//rota de login
+router.post('/session',new AuthUserController().handle);
+
 
 export default router;
