@@ -12,3 +12,16 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+//criar uma migration ( tabela) para o banco de dados
+model User{
+  id String @id @default(uuid())
+  name String
+  email String 
+  password String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
+  @@map("users")
+}
