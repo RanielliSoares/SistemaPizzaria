@@ -1,11 +1,11 @@
-import express from 'express';
+
 import { Request, Response,Router } from 'express';
 
-const router: Router = express.Router();
+import { CreateUserController } from './controllers/user/CreateUserController';
 
-router.get('/teste', (req: Request, res: Response) => {
-  return res.json({ nome: "Sujeito Pizza" }); 
-}
-);
+const router = Router();
+router.post('/users', (req: Request, res: Response) => {
+    return new CreateUserController().handle(req, res); // CreateUserController.handle(req, res);
+});
 
 export default router;
