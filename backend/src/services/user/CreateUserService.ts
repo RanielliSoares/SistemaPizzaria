@@ -36,8 +36,6 @@ class CreateUserService{
                 email: true,
             }
         });
-
-        console.log(name)
         return{user};
     }
 }

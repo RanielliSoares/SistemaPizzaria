@@ -25,7 +25,6 @@ model User{
 
   @@map("users")
 }
-<<<<<<< HEAD
 
 model Category{
   id String @id @default(uuid())
@@ -82,5 +81,3 @@ model Item{
   product_id String
 
 }
-=======
->>>>>>> 35c9217a8a836e65c15362b7aa41013542428ae7
