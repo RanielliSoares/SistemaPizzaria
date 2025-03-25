@@ -13,7 +13,7 @@ import { CreateProductController } from './controllers/product/CreateProductCont
 import uploadConfig from './config/multer'
 
 const router = Router();
-const upload = uploadConfig.upload('./tmp');
+const upload = multer(uploadConfig.upload("./tmp"));
 
 //** ROTAS USER **/
 
@@ -32,6 +32,6 @@ router.get('/category', isAuthenticated, new ListCategoryController().handle);
 
 /**  ROTAS PRODUCT */
 
-router.post('/product',  isAuthenticated,  new CreateProductController().handle )
+router.post('/product',  isAuthenticated, upload.single('file'),  new CreateProductController().handle )
 
 export default router;

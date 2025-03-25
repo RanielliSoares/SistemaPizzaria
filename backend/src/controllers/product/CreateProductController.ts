@@ -6,17 +6,25 @@ class CreateProductController {
     async handle(req: Request, res: Response) {
 
         const { name, price, description, category_id } = req.body;
-        let banner = '';
+
         const createProductService = new CreateProductService();
 
-        const product = await createProductService.execute({
-            name,
-            price,
-            description,
-            category_id,
-            banner
-        });
-        return res.json(product)
+        if(!req.file){
+            return res.status(400).json({message: "Banner is required"})
+        }else{
+            const {originalname,filename} = req.file;
+            console.log(originalname,filename)
+            const product = await createProductService.execute({
+                name,
+                price,
+                description,
+                category_id,
+                banner:''
+            });
+            return res.json(product)
+        }
+
+        
 
     }
 }
