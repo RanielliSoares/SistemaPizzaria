@@ -12,14 +12,14 @@ class CreateProductController {
         if(!req.file){
             return res.status(400).json({message: "Banner is required"})
         }else{
-            const {originalname,filename} = req.file;
-            console.log(originalname,filename)
+            const {originalname, filename: banner} = req.file;
+            
             const product = await createProductService.execute({
                 name,
                 price,
                 description,
                 category_id,
-                banner:''
+                banner
             });
             return res.json(product)
         }
